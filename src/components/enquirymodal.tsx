@@ -67,22 +67,21 @@ const EnquiryModal = () => {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 animate-in fade-in duration-300"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-3 sm:p-4 md:p-6 animate-in fade-in duration-300"
       onClick={closeModal}
     >
       <div
-        className="relative flex flex-col md:flex-row w-full md:h-[550px] bg-white shadow-2xl overflow-hidden animate-in slide-in-from-top-10 duration-400 max-h-[90vh]"
+        className="relative flex flex-col lg:flex-row w-full max-w-[95vw] sm:max-w-[90vw] md:max-w-[85vw] lg:max-w-[1000px] max-h-[95vh] sm:max-h-[90vh] bg-white shadow-2xl overflow-hidden animate-in slide-in-from-top-10 duration-400 rounded-none sm:rounded-lg"
         onClick={(e) => e.stopPropagation()}
-        style={{ maxWidth: '1000px' }}
       >
         {/* Close Button */}
         <button
           onClick={closeModal}
-          className="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center text-gray-600 hover:text-black transition-all duration-200 border-2 border-gray-400 rounded bg-white/90"
+          className="absolute top-2  cursor-pointer right-2 sm:top-3 sm:right-3 md:top-4 md:right-4 z-10 w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 flex items-center justify-center text-gray-600 hover:text-black transition-all duration-200 border-2 border-gray-400 rounded bg-white/90 hover:bg-white"
           aria-label="Close modal"
         >
           <svg
-            className="w-5 h-5"
+            className="w-4 h-4 sm:w-5 sm:h-5"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -96,30 +95,30 @@ const EnquiryModal = () => {
           </svg>
         </button>
 
-        {/* Top - Image (mobile) / Left Side (desktop) */}
-        <div className="w-full md:w-[48%] h-[200px] md:h-auto md:p-5">
-          <div className="relative w-full h-full md:p-0">
+        {/* Image Section - Top on mobile, Left on desktop */}
+        <div className="w-full lg:w-[48%] h-[180px] sm:h-[220px] md:h-[260px] lg:h-auto lg:min-h-[500px] xl:min-h-[550px] lg:p-5">
+          <div className="relative w-full h-full">
             <Image
               src="/popimg.jpg"
               alt="Runwal Realty"
               fill
-              className="object-fill md:object-contain"
+              className="object-fill sm:object-fill lg:object-contain"
               priority
             />
           </div>
         </div>
 
-        {/* Bottom - Form (mobile) / Right Side (desktop) */}
-        <div className="w-full md:w-[52%] px-6 py-8 md:px-10 md:py-10 flex flex-col justify-center overflow-y-auto bg-white">
-          <div className="w-full text-center" style={{ maxWidth: '470px', margin: '0 auto' }}>
-            <h2 className="text-[1.5rem] md:text-[2rem] font-serif font-normal mb-3 md:mb-4 text-gray-900 tracking-tight leading-tight">
+        {/* Form Section - Bottom on mobile, Right on desktop */}
+        <div className="w-full lg:w-[52%] px-4 py-6 sm:px-6 sm:py-7 md:px-8 md:py-8 lg:px-10 lg:py-10 flex flex-col justify-center overflow-y-auto bg-white">
+          <div className="w-full max-w-[470px] mx-auto">
+            <h2 className="text-xl sm:text-2xl md:text-[1.75rem] lg:text-[2rem] font-serif font-normal mb-2 sm:mb-3 md:mb-4 text-gray-900 tracking-tight leading-tight text-center">
               Enquire Now
             </h2>
-            <p className="text-[13px] md:text-[14px] text-gray-800 mb-6 md:mb-7 leading-relaxed">
+            <p className="text-xs sm:text-[13px] md:text-[14px] text-gray-800 mb-4 sm:mb-5 md:mb-6 lg:mb-7 leading-relaxed text-center px-2 sm:px-0">
               Please enter the details below to get in touch with us!
             </p>
 
-            <form onSubmit={handleSubmit} className="space-y-4 md:space-y-5">
+            <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4 md:space-y-5">
               {/* Full Name */}
               <div>
                 <input
@@ -129,7 +128,7 @@ const EnquiryModal = () => {
                   required
                   value={formData.fullName}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 text-[14px] border-2 border-gray-400 focus:outline-none focus:ring-0 focus:border-gray-600 transition-colors placeholder:text-gray-500"
+                  className="w-full px-3 py-2.5 sm:px-4 sm:py-3 text-[13px] sm:text-[14px] border-2 border-gray-400 focus:outline-none focus:ring-0 focus:border-gray-600 transition-colors placeholder:text-gray-500 rounded-sm"
                 />
               </div>
 
@@ -142,7 +141,7 @@ const EnquiryModal = () => {
                   required
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 text-[14px] border-2 border-gray-400 focus:outline-none focus:ring-0 focus:border-gray-600 transition-colors placeholder:text-gray-500"
+                  className="w-full px-3 py-2.5 sm:px-4 sm:py-3 text-[13px] sm:text-[14px] border-2 border-gray-400 focus:outline-none focus:ring-0 focus:border-gray-600 transition-colors placeholder:text-gray-500 rounded-sm"
                 />
               </div>
 
@@ -155,12 +154,12 @@ const EnquiryModal = () => {
                   required
                   value={formData.phone}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 text-[14px] border-2 border-gray-400 focus:outline-none focus:ring-0 focus:border-gray-600 transition-colors placeholder:text-gray-500"
+                  className="w-full px-3 py-2.5 sm:px-4 sm:py-3 text-[13px] sm:text-[14px] border-2 border-gray-400 focus:outline-none focus:ring-0 focus:border-gray-600 transition-colors placeholder:text-gray-500 rounded-sm"
                 />
               </div>
 
               {/* Consent Checkbox */}
-              <div className="flex items-start md:items-center justify-center gap-2 pt-2">
+              <div className="flex items-start gap-2 pt-1 sm:pt-2">
                 <input
                   type="checkbox"
                   name="consent"
@@ -168,21 +167,21 @@ const EnquiryModal = () => {
                   required
                   checked={formData.consent}
                   onChange={handleInputChange}
-                  className="w-4 h-4 mt-0.5 md:mt-0 cursor-pointer accent-blue-600 border-gray-300 flex-shrink-0"
+                  className="w-4 h-4 mt-0.5 cursor-pointer accent-blue-600 border-gray-300 flex-shrink-0"
                 />
                 <label
                   htmlFor="consent"
-                  className="text-[12px] text-gray-900 leading-[1.4] cursor-pointer select-none text-left md:text-center"
+                  className="text-[11px] sm:text-[12px] text-gray-900 leading-[1.4] cursor-pointer select-none text-left"
                 >
                   I agree to be contacted via calls and WhatsApp for information and promotional purposes.
                 </label>
               </div>
 
               {/* Submit Button */}
-              <div className="pt-3 flex justify-center">
+              <div className="pt-2 sm:pt-3 flex justify-center">
                 <button
                   type="submit"
-                  className="bg-[#b8935e] hover:bg-[#a17f4d] text-white font-medium text-[14px] px-12 py-3 transition-all duration-300 inline-block w-full md:w-auto"
+                  className="bg-[#b8935e] cursor-pointer hover:bg-[#a17f4d] text-white font-medium text-[13px] sm:text-[14px] px-8 sm:px-10 md:px-12 py-2.5 sm:py-3 transition-all duration-300 w-full sm:w-auto rounded-sm active:scale-95"
                 >
                   Submit
                 </button>

@@ -1,15 +1,17 @@
-// components/EnquireForm.tsx
-'use client';
-
+"use client"
 import { useState } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
+type GalleryTab = 'renders' | 'showflat' | 'floorplan' | 'view360';
+
+// EnquireForm Component
 interface EnquireFormProps {
   isOpen: boolean;
   onClose: () => void;
-  headerType?: 'enquire' | 'price'|"Brochure";
+  headerType?: 'enquire' | 'price' | 'Brochure' | 'floorplan' | 'view360';
 }
 
-export default function EnquireForm({ isOpen, onClose, headerType = 'enquire' }: EnquireFormProps) {
+function EnquireForm({ isOpen, onClose, headerType = 'enquire' }: EnquireFormProps) {
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -34,12 +36,23 @@ export default function EnquireForm({ isOpen, onClose, headerType = 'enquire' }:
 
   if (!isOpen) return null;
 
-  const isPrice = headerType === 'price';
+  const getHeaderText = () => {
+    if (headerType === 'floorplan') return 'Floor Plan';
+    if (headerType === 'view360') return '360 View';
+    if (headerType === 'price') return 'Price';
+    return 'Enquire Now';
+  };
+
+  const getDescriptionText = () => {
+    if (headerType === 'floorplan') return 'Please enter your details to download the floor plan.';
+    if (headerType === 'view360') return 'Please enter your details to access the 360 view.';
+    if (headerType === 'price') return 'Please enter the details below to get the detailed pricing information.';
+    return 'Please enter the details below to get in touch with us!';
+  };
 
   return (
     <div className="fixed inset-0 flex items-center justify-center p-5 z-50 bg-black/50">
       <div className="bg-white rounded-lg shadow-2xl max-w-lg w-full p-8 relative">
-        {/* Close Button */}
         <button
           onClick={onClose}
           className="absolute cursor-pointer top-5 right-5 text-gray-400 hover:text-gray-700 text-3xl leading-none transition-colors"
@@ -47,19 +60,14 @@ export default function EnquireForm({ isOpen, onClose, headerType = 'enquire' }:
           ×
         </button>
 
-        {/* Header */}
         <h1 className="text-center text-3xl font-normal text-gray-800 mb-4">
-          {isPrice ? 'Price' : 'Enquire Now'}
+          {getHeaderText()}
         </h1>
         <p className="text-center text-sm text-gray-600 mb-6">
-          {isPrice 
-            ? 'Please enter the details below to get the detailed pricing information.'
-            : 'Please enter the details below to get in touch with us!'}
+          {getDescriptionText()}
         </p>
 
-        {/* Form */}
         <div>
-          {/* Full Name */}
           <div className="mb-5">
             <input
               type="text"
@@ -72,7 +80,6 @@ export default function EnquireForm({ isOpen, onClose, headerType = 'enquire' }:
             />
           </div>
 
-          {/* Email */}
           <div className="mb-5">
             <input
               type="email"
@@ -85,7 +92,6 @@ export default function EnquireForm({ isOpen, onClose, headerType = 'enquire' }:
             />
           </div>
 
-          {/* Phone */}
           <div className="mb-5">
             <input
               type="tel"
@@ -98,7 +104,6 @@ export default function EnquireForm({ isOpen, onClose, headerType = 'enquire' }:
             />
           </div>
 
-          {/* Checkbox */}
           <div className="flex items-start mb-6">
             <input
               type="checkbox"
@@ -113,7 +118,6 @@ export default function EnquireForm({ isOpen, onClose, headerType = 'enquire' }:
             </label>
           </div>
 
-          {/* Submit Button */}
           <div className="text-center">
             <button
               onClick={handleSubmit}
@@ -127,3 +131,4 @@ export default function EnquireForm({ isOpen, onClose, headerType = 'enquire' }:
     </div>
   );
 }
+export default EnquireForm

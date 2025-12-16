@@ -250,9 +250,10 @@ export default function ContactFooterSection() {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 bg-[#fffbf0] border-gray-200">
+      {/* Footer */}
+      <footer className="py-8 bg-[#fffbf0] border-t border-gray-200">
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="text-center space-y-2">
+          <div className="text-center space-y-2 pb-4">
             <p className="text-gray-800 font-medium">Disclaimer</p>
             <p className="text-gray-600 text-sm">© 2025 Runwal. All rights reserved.</p>
           </div>

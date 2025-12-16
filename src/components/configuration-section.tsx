@@ -49,11 +49,11 @@ export function ConfigurationSection() {
           </div>
 
           {/* Desktop Grid */}
-          <div className="hidden md:grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="hidden md:grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {configurations.map((config, index) => (
               <div
                 key={index}
-                className="border-8 border-white bg-transparent text-center transition-all duration-300 hover:scale-105"
+                className="border-8 border-white bg-transparent text-center transition-all duration-500 hover:translate-y-[-20px]"
               >
                 <div className="bg-black/60 p-8 pb-12">
                   <h3 className="text-3xl font-serif mb-6 text-white">{config.type}</h3>
@@ -79,7 +79,8 @@ export function ConfigurationSection() {
           </div>
 
           {/* Mobile Horizontal Scroll */}
-          <div className="md:hidden relative">
+         {/* Mobile Horizontal Scroll */}
+          <div className="md:hidden relative max-w-sm mx-auto">
             <div 
               ref={scrollContainerRef}
               className="flex gap-0 overflow-x-auto scrollbar-hide snap-x snap-mandatory"
@@ -88,53 +89,59 @@ export function ConfigurationSection() {
               {configurations.map((config, index) => (
                 <div
                   key={index}
-                  className="flex-shrink-0 w-full snap-center border-8 border-white bg-transparent text-center px-4"
+                  className="flex-shrink-0 w-full snap-center"
                 >
-                  <div className="bg-black/60 p-6 pb-10">
-                    <h3 className="text-2xl font-serif mb-4 text-white">{config.type}</h3>
+                  <div className="border-8 border-white bg-transparent text-center">
+                    <div className="bg-black/70 p-8 pb-10">
+                      <h3 className="text-3xl font-serif mb-6 text-white">{config.type}</h3>
 
-                    <div className="w-12 h-[2px] bg-white mx-auto mb-4"></div>
+                      <div className="w-16 h-[2px] bg-white mx-auto mb-6"></div>
 
-                    <p className="text-3xl font-bold mb-2 text-white">{config.area}</p>
-                    <p className="text-base mb-4 text-white">{config.unit}</p>
+                      <p className="text-4xl font-bold mb-2 text-white">{config.area}</p>
+                      <p className="text-lg mb-6 text-white">{config.unit}</p>
 
-                    <div className="w-12 h-[2px] bg-white mx-auto mb-4"></div>
+                      <div className="w-16 h-[2px] bg-white mx-auto mb-6"></div>
 
-                    <button 
-                      onClick={() => setIsFormOpen(true)}
-                      className="border-2 border-white cursor-pointer text-white px-6 py-2.5 text-sm transition-all duration-300 hover:bg-white hover:text-gray-900"
-                    >
-                      ₹ Check Price
-                    </button>
+                      <button 
+                        onClick={() => setIsFormOpen(true)}
+                        className="border-2 border-white cursor-pointer text-white px-8 py-3 text-base transition-all duration-300 hover:bg-white hover:text-gray-900"
+                      >
+                        ₹ Check Price
+                      </button>
+                    </div>
+
+                    <div className="bg-white h-16"></div>
                   </div>
-
-                  <div className="bg-white h-10"></div>
                 </div>
               ))}
             </div>
 
             {/* Navigation Arrows */}
-            <div className="flex justify-center items-center gap-4 mt-6">
+            <div className="flex justify-center items-center gap-6 mt-8">
               <button
                 onClick={() => scroll('left')}
-                className="w-8 h-8 flex items-center justify-center text-white hover:text-white/70 transition-colors"
+                className="w-10 h-10 flex items-center justify-center text-white hover:text-white/70 transition-colors"
                 aria-label="Previous"
               >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M15 18l-6-6 6-6" />
                 </svg>
               </button>
               <button
                 onClick={() => scroll('right')}
-                className="w-8 h-8 flex items-center justify-center text-white hover:text-white/70 transition-colors"
+                className="w-10 h-10 flex items-center justify-center text-white hover:text-white/70 transition-colors"
                 aria-label="Next"
               >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M9 18l6-6-6-6" />
                 </svg>
               </button>
             </div>
+
+            
           </div>
+
+         
 
           <div className="text-right mt-6 md:mt-8 max-w-6xl mx-auto">
             <p className="text-xs md:text-sm text-white/70 italic">As per RERA Carpet Area*</p>

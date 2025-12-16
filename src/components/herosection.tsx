@@ -47,17 +47,17 @@ export default function HeroSection() {
   }
 
   return (
-    <section className="relative">
-      <div className="bg-gray-200 py-2 text-center">
+    <section className="relative w-full overflow-hidden">
+      <div className="bg-gray-200 py-2 text-center w-full">
         <p className="text-xs sm:text-sm px-4 font-bold text-gray-700">
           This Is An Official Runwal Realty Website - ©2025 Runwal Realty. All Right Reserved
         </p>
       </div>
 
-      <div className="relative h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] overflow-hidden">
+      <div className="relative h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] w-full overflow-hidden">
         {/* Hero Image */}
-        <div className="absolute inset-0">
-          <div className="relative w-full h-full">
+        <div className="absolute inset-0 w-full h-full">
+          <div className="relative w-full h-full overflow-hidden">
             {slides.map((slide, index) => (
               <img
                 key={index}
@@ -69,7 +69,7 @@ export default function HeroSection() {
               />
             ))}
           </div>
-          <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent pointer-events-none" />
         </div>
 
         {/* Navigation Arrows */}
